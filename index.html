@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seenu Gaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+</head>
+<body>
+
+<div class="wrapper">
+	<div class="top-icons">
+		<i class="fas fa-long-arrow-alt-left"></i>
+		<!-- <i class="fas fa-ellipsis-v"></i> -->
+		<i class="far fa-heart"></i>
+	</div>
+	
+	<div class="profile">
+		<img id="dynamicImage" src="https://images.unsplash.com/photo-1484186139897-d5fc6b908812?ixlib=rb-0.3.5&s=9358d797b2e1370884aa51b0ab94f706&auto=format&fit=crop&w=200&q=80%20500w" class="thumbnail">
+		<h3 id="dynamicText" class="name">Seenu Gaming</h3>
+        <br>
+		<strong><p class="description">Welcome to Seenu Gaming Live Streaming. Make sure to like and Subscribe!</p></strong>
+	</div>
+</div>
+<script>
+    // Function to get URL parameters
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Get image and text parameters from URL
+    var imageUrl = getParameterByName('image');
+    var text = getParameterByName('text');
+
+    // Set image source and text content
+    var dynamicImage = document.getElementById('dynamicImage');
+    var dynamicText = document.getElementById('dynamicText');
+    
+    if (imageUrl) {
+        dynamicImage.src = imageUrl;
+    } else {
+        dynamicImage.src = 'default.jpg'; // Default image if no URL parameter is provided
+    }
+    
+    if (text) {
+        dynamicText.textContent = text;
+    } else {
+        dynamicText.textContent = 'Default Text'; // Default text if no URL parameter is provided
+    }
+</script>
+</body>
+</html>
